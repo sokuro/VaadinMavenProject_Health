@@ -1,33 +1,47 @@
 package vaadinFrame;
 
+import com.vaadin.server.ExternalResource;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.*;
 
 /**
  * Created by uck1 on 14.05.2016.
  */
 public class MyView extends CustomComponent {
+
     TextField entry = new TextField("Enter this");
-    Label display = new Label("See this");
+    Label display = new Label("Health Visitor");
     Button click = new Button("Click This");
     Button disabledClick = new Button("Click Disabled");
 
+    Button openVisitor = new Button("Open visitor");
+//    HealthVisitor visitor = new HealthVisitor();
+
     //constructor
     public MyView() {
-        Layout layout = new FormLayout();
-        layout.addComponent(entry);
-        layout.addComponent(display);
-        layout.addComponent(click);
-        layout.addComponent(disabledClick);
+//        HorizontalLayout actions = new HorizontalLayout(openVisitor);
 
-        //configuring
+        Layout layout = new FormLayout();
+        layout.addComponent(display);
+
         entry.setCaption("Entry some text:");
+        layout.addComponent(entry);
+
+        click.setWidth(10, Unit.CM);
         click.setEnabled(true);
         click.addClickListener(e -> {
             layout.addComponent(new Label("Thanks " + entry.getValue()
             + ", it works!"));
         });
-        click.setDescription("This is a click");
+        layout.addComponent(click);
+
         disabledClick.setEnabled(false);
+        layout.addComponent(disabledClick);
+
+        openVisitor.addClickListener(e -> {
+            HealthVisitor visitor = new HealthVisitor();
+        });
+        layout.addComponent(openVisitor);
 
         setCompositionRoot(layout);
 //        setSizeFull();

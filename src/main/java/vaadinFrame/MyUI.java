@@ -20,26 +20,14 @@ import com.vaadin.ui.*;
 @Widgetset("vaadinFrame.MyAppWidgetset")
 public class MyUI extends UI {
 
+    // Main method
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        buildLayout();
+    }
 
+    private void buildLayout() {
         MyView myView = new MyView();
-//        final VerticalLayout layout = new VerticalLayout();
-//        final Layout layout = new MyView();
-//
-//        final TextField name = new TextField();
-//        name.setCaption("Type your name here:");
-
-//        Button button = new Button("Click Me");
-//        button.addClickListener( e -> {
-//            layout.addComponent(new Label("Thanks " + name.getValue()
-//                    + ", it works!"));
-//        });
-//
-//        layout.addComponents(name, button);
-//        layout.setMargin(true);
-//        layout.setSpacing(true);
-        
         setContent(myView);
     }
 
