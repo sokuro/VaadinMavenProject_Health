@@ -6,7 +6,6 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import components.ContactService;
 
 import javax.servlet.annotation.WebServlet;
@@ -38,11 +37,21 @@ public class MyUI extends UI {
     }
 
     private void buildLayout() {
-        VerticalLayout vert = new VerticalLayout(patientList);
-        vert.setSizeFull();
-        patientList.setSizeFull();
-        vert.setExpandRatio(patientList, 1);
-        setContent(vert);
+//        VerticalLayout vert = new VerticalLayout(patientList);
+//        vert.setSizeFull();
+//        patientList.setSizeFull();
+//        vert.setExpandRatio(patientList, 1);
+//        setContent(vert);
+
+//        AccordeonTab mView = new AccordeonTab("basic");
+//        mView.setSizeFull();
+//        setContent(mView);
+//        AccordeonTab mView2 = new AccordeonTab("tabchange");
+//        mView2.setSizeFull();
+//        setContent(mView2);
+
+        HealthVisitor visitor = new HealthVisitor();
+        setContent(visitor);
     }
 
     @WebServlet(urlPatterns = "/*")
