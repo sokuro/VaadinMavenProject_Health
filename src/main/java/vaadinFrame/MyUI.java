@@ -6,6 +6,9 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
+import components.ContactService;
+
 import javax.servlet.annotation.WebServlet;
 
 /**
@@ -15,22 +18,33 @@ import javax.servlet.annotation.WebServlet;
 @Widgetset("vaadinFrame.MyAppWidgetset")
 public class MyUI extends UI {
 
-    // Main method
+    PatientList patientList = new PatientList();
+
+    // in-memory mock that mimics a datasource
+    ContactService contactService = ContactService.createDemoService();
+
+    /*
+     * Main method. Entry point method executed to initialize and configure
+     * the visible user interface.
+     */
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        configureComponents();
         buildLayout();
     }
 
-    private void buildLayout() {
-//        MyView myView = new MyView();
-//        setContent(myView);
-//        HealthVisitor visitor = new HealthVisitor();
-//        setContent(visitor);
-        PatientList patient = new PatientList();
-        setContent(patient);
+    private void configureComponents() {
+
     }
 
-//    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    private void buildLayout() {
+        VerticalLayout vert = new VerticalLayout(patientList);
+        vert.setSizeFull();
+        patientList.setSizeFull();
+        vert.setExpandRatio(patientList, 1);
+        setContent(vert);
+    }
+
     @WebServlet(urlPatterns = "/*")
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {

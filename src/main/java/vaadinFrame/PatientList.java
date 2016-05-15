@@ -24,12 +24,20 @@ public class PatientList extends CustomComponent{
     }
 
     private void configureComponents() {
+        /* Synchronous event handling.
+         *
+         * Receive user interaction events on the server-side. This allows you
+         * to synchronously handle those events. Vaadin automatically sends
+         * only the needed changes to the web page without loading a new page.
+         */
         newContact.addClickListener(e -> patient.edit(new Contact()));
         filter.setInputPrompt("Filter contacts...");
         filter.addTextChangeListener(e -> refreshContacts(e.getText()));
 
         contactList.setContainerDataSource(new BeanItemContainer<>(Contact.class));
         contactList.setColumnOrder("firstName", "lastName", "email");
+        contactList.removeColumn("address");
+        contactList.removeColumn("city");
         contactList.removeColumn("id");
         contactList.removeColumn("birthDate");
         contactList.removeColumn("phone");
@@ -40,7 +48,6 @@ public class PatientList extends CustomComponent{
     }
 
     private void buildLayout() {
-//        Panel panel = new Panel("Patients");
 
         HorizontalLayout actions = new HorizontalLayout(filter, newContact);
         actions.setWidth("100%");
@@ -56,8 +63,6 @@ public class PatientList extends CustomComponent{
         horizontal.setSizeFull();
         horizontal.setExpandRatio(vertical, 1);
 
-//        panel.setContent(vertical);
-//        setCompositionRoot(panel);
         setCompositionRoot(horizontal);
     }
 

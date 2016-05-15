@@ -4,7 +4,6 @@ import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
-import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.themes.ValoTheme;
 import components.Contact;
 
@@ -24,7 +23,7 @@ public class Patient extends FormLayout {
     Component birthday = new PopupDateField("Birthday");
 
     Contact contact;
-    PatientList patList;
+//    PatientList patList;
 
     // Easily bind forms to beans and manage validation and buffering
     BeanFieldGroup<Contact> formFieldBindings;
@@ -51,20 +50,20 @@ public class Patient extends FormLayout {
     public void save(Button.ClickEvent event) {
         try {
             formFieldBindings.commit();
-            patList.service.save(contact);
+            getUI().patientList.service.save(contact);
             String msg = String.format("Saved '%s %s'.",
                     contact.getFirstName(),
                     contact.getLastName());
             Notification.show(msg, Notification.Type.TRAY_NOTIFICATION);
-            patList.refreshContacts();
+            getUI().patientList.refreshContacts();
         } catch (FieldGroup.CommitException e) {
 
         }
     }
     public void cancel(Button.ClickEvent event) {
         // Place to call business logic.
-        Notification.show("Cancelled", Type.TRAY_NOTIFICATION);
-        patList.contactList.select(null);
+        Notification.show("Cancelled", Notification.Type.TRAY_NOTIFICATION);
+        getUI().patientList.contactList.select(null);
     }
 
     void edit(Contact contact) {

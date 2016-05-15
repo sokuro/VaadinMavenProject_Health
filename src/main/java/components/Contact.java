@@ -14,6 +14,8 @@ public class Contact implements Serializable, Cloneable {
 
     private String firstName = "";
     private String lastName = "";
+    private String address = "";
+    private String city = "";
     private String phone = "";
     private String email = "";
     private Date birthDate;
@@ -41,6 +43,16 @@ public class Contact implements Serializable, Cloneable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {this.address = address; }
+
+    public String getCity() {return city; }
+
+    public void setCity(String city) {this.city = city; }
 
     public String getPhone() {
         return phone;
