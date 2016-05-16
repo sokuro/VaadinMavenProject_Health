@@ -3,8 +3,8 @@ package vaadinFrame;
 
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.*;
-import components.Contact;
-import components.ContactService;
+import model.Contact;
+import model.ContactService;
 
 /**
  * Created by uck1 on 15.05.2016.

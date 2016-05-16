@@ -7,7 +7,7 @@
 //$v-font-weight: 300;
 //$v-font-family: "Open Sans", sans-serif;
 
-// Defines the border used by all components.
+// Defines the border used by all model.
 //$v-border: 1px solid (v-shade 0.7);
 //$v-border-radius: 4px;
 
@@ -16,7 +16,7 @@
 // Affects the color of content areas, e.g  Panel and Window content, TextField input etc
 //$v-app-background-color: $v-background-color;
 
-// Affects the visual appearance of all components
+// Affects the visual appearance of all model
 //$v-gradient: v-linear 8%;
 //$v-bevel-depth: 30%;
 //$v-shadow-opacity: 5%;
@@ -35,4 +35,21 @@
   @include valo;
 
   // Insert your own theme rules here
+  .v-label-mylabelstyle {
+    color: white;
+    text-align: center;
+    background-color: #1d69b4;
+    border-color: white;
+    font-weight: bold;
+  }
+
+  .v-button-mystyle {
+    background-color: lightblue;
+    font-size: 14pt;
+    font-weight: bold;
+    color: darkviolet;
+    border-color: #0e0e0e;
+    border-radius: 0px;
+    background-image: none;
+  }
 }

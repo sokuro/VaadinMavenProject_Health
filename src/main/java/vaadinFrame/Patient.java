@@ -5,19 +5,19 @@ import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import components.Contact;
+import model.Contact;
 
 /**
  * Created by uck1 on 15.05.2016.
  */
 public class Patient extends FormLayout {
 
-    Button save = new Button("Save", this::save);
-    Button cancel = new Button("Cancel", this::cancel);
-    TextField firstName = new TextField("First name");
-    TextField lastName = new TextField("Last name");
-    TextField phone = new TextField("Phone: ");
-    TextField email = new TextField("Email");
+    private Button save = new Button("Save", this::save);
+    private Button cancel = new Button("Cancel", this::cancel);
+    private TextField firstName = new TextField("First name");
+    private TextField lastName = new TextField("Last name");
+    private TextField phone = new TextField("Phone: ");
+    private TextField email = new TextField("Email");
 //    TextField address = new TextField("Address: ");
 //    TextField city = new TextField("City: ");
     Component birthday = new PopupDateField("Birthday");

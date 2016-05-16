@@ -12932,3 +12932,21 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .v-label-mylabelstyle {
+	color: white;
+	text-align: center;
+	background-color: #1d69b4;
+	border-color: white;
+	font-weight: bold;
+}
+
+.mytheme .v-button-mystyle {
+	background-color: lightblue;
+	font-size: 14pt;
+	font-weight: bold;
+	color: darkviolet;
+	border-color: #0e0e0e;
+	border-radius: 0px;
+	background-image: none;
+}

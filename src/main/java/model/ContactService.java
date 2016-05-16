@@ -1,4 +1,4 @@
-package components;
+package model;
 
 import org.apache.commons.beanutils.BeanUtils;
 

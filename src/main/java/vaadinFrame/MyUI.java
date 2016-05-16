@@ -3,10 +3,12 @@ package vaadinFrame;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
-import components.ContactService;
+import model.ContactService;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -16,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 @Theme("mytheme")
 @Widgetset("vaadinFrame.MyAppWidgetset")
 public class MyUI extends UI {
+    static Navigator navigator;
+    protected static final String MAINVIEW = "main";
 
     PatientList patientList = new PatientList();
 
@@ -30,6 +34,12 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         configureComponents();
         buildLayout();
+        getPage().setTitle("Navigations");
+        // navigator to control the views
+        navigator = new Navigator(this, this);
+        // create and register the views
+        navigator.addView("", new StartView());
+        navigator.addView(MAINVIEW, (View) new MainView());
     }
 
     private void configureComponents() {
@@ -50,7 +60,7 @@ public class MyUI extends UI {
 //        mView2.setSizeFull();
 //        setContent(mView2);
 
-        HealthVisitor visitor = new HealthVisitor();
+        HealthVisitorTwo visitor = new HealthVisitorTwo();
         setContent(visitor);
     }
 
